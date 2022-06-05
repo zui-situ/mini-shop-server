@@ -36,13 +36,6 @@ export class listDto {
   readonly name: string;
 
   @ApiProperty({
-    description: '类别标识',
-    type: String,
-    required: false,
-  })
-  readonly code: string;
-
-  @ApiProperty({
     description: '当前页数',
     type: Number,
   })
