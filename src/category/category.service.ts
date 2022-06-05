@@ -95,7 +95,7 @@ export class CategoryService {
       $or: [{ name: { $regex: reg } }],
       deleteFlag: 0,
     };
-    if (Number(status) === 1 || Number(status) === 0) {
+    if ((Number(status) === 1 || Number(status) === 0) && status !== '') {
       findObj.status = Number(status);
     }
     return findObj;
