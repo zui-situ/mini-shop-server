@@ -28,8 +28,8 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
 
   const options = new DocumentBuilder()
-    .setTitle('博客后端接口文档')
-    .setDescription('博客后端接口文档')
+    .setTitle('迷你商城接口文档')
+    .setDescription('迷你商城接口文档')
     .setVersion('1.0')
     .addBearerAuth()
     .build();

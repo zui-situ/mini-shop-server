@@ -8,6 +8,8 @@ import { AuthModule } from './auth/auth.module';
 import { CategoryModule } from './category/category.module';
 import { FreeModule } from './free/free.module';
 import { FileModule } from './file/file.module';
+import { DictTypeModule } from './dict-type/dict-type.module';
+import { DictItemModule } from './dict-item/dict-item.module';
 const MAO = require('multer-aliyun-oss');
 
 @Module({
@@ -33,6 +35,8 @@ const MAO = require('multer-aliyun-oss');
     CategoryModule,
     FreeModule,
     FileModule,
+    DictTypeModule,
+    DictItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],

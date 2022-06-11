@@ -1,30 +1,30 @@
-import { HttpException, Injectable } from '@nestjs/common';
-import { InjectModel } from 'nestjs-typegoose';
+import { DictType } from '@app/db/models/dictType.model';
+import { Injectable, HttpException } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
-import { Category } from '@app/db/models/category.model';
+import { InjectModel } from 'nestjs-typegoose';
 import { ObjectId } from 'mongoose';
-
 @Injectable()
-export class CategoryService {
+export class DictTypeService {
   constructor(
-    @InjectModel(Category)
-    private categoryModel: ReturnModelType<typeof Category>,
+    @InjectModel(DictType)
+    private DictTypeModel: ReturnModelType<typeof DictType>,
   ) {}
+
   /**
    * 更新状态
    *
    * @param id ID
    * @param status 状态
    */
-  async upDateCategoryStatus(id: ObjectId, status: number): Promise<void> {
-    await this.categoryModel.findByIdAndUpdate(id, { status });
+  async upDateStatus(id: ObjectId, status: number): Promise<void> {
+    await this.DictTypeModel.findByIdAndUpdate(id, { status });
   }
   /**
    * 查询分类列表
    *
    * @query query 内容
    */
-  async categoryList(query: any): Promise<any> {
+  async dictTypeList(query: any): Promise<any> {
     const { pageNo, pageSize } = query;
     const skip = (pageNo - 1) * pageSize;
     const findObj = await this.ListFindObj(query);
@@ -37,9 +37,11 @@ export class CategoryService {
         skip,
       });
     }
-    const data = await this.categoryModel
-      .find(findObj, '-deleteFlag', selectObj)
-      .lean();
+    const data = await this.DictTypeModel.find(
+      findObj,
+      '-deleteFlag',
+      selectObj,
+    ).lean();
     return data;
   }
   /**
@@ -47,10 +49,10 @@ export class CategoryService {
    *
    * @query query 内容
    */
-  async categoryPage(query: any): Promise<any> {
+  async dictTypePage(query: any): Promise<any> {
     const { pageNo, pageSize } = query;
     const findObj = await this.ListFindObj(query);
-    const count = await this.categoryModel.countDocuments(findObj);
+    const count = await this.DictTypeModel.countDocuments(findObj);
     return {
       count,
       currentPage: Number(pageNo),

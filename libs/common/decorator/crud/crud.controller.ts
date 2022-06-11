@@ -37,7 +37,6 @@ export class CrudController {
     @CurrentUser() user: UserDocument,
   ) {
     const { findKey, createDefaultValue, addUser = false } = this.crudOptions;
-    console.log(createDefaultValue);
     if (findKey) {
       const value = body[findKey];
       const obj = {
