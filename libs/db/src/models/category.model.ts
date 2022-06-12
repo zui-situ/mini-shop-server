@@ -18,15 +18,15 @@ export class Category {
   @prop()
   public cover: string;
 
-  @ApiProperty({
-    description: '[禁用标记]: 0-关闭 | 1-开启',
-  })
+  // @ApiProperty({
+  //   description: '[禁用标记]: 0-关闭 | 1-开启',
+  // })
   @prop()
   public status: number;
 
-  @ApiProperty({
-    description: '[删除标记]: 0-未删除 | 1-删除',
-  })
+  // @ApiProperty({
+  //   description: '[删除标记]: 0-未删除 | 1-删除',
+  // })
   @prop()
   public deleteFlag: number;
 }

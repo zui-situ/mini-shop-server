@@ -48,7 +48,7 @@ export class User {
   @prop()
   role?: number | string;
 
-  @ApiProperty({ description: '删除标记,0是未删除，1是删除' })
+  // @ApiProperty({ description: '删除标记,0是未删除，1是删除' })
   @prop()
   deleteFlag: number;
 
