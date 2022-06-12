@@ -18,26 +18,26 @@ export class DictItem {
   public dictType: Ref<DictType>;
 
   @ApiProperty({
-    description: '类型项标签',
+    description: '字典项标签',
     example: '显示/隐藏',
     type: String,
     required: true,
   })
-  @IsNotEmpty({ message: '类型项标签不能为空' })
+  @IsNotEmpty({ message: '字典项标签不能为空' })
   @prop()
   public label: string;
 
   @ApiProperty({
-    description: '类型项值',
+    description: '字典项值',
     example: '0',
     type: String,
     required: true,
   })
-  @IsNotEmpty({ message: '类型项值不能为空' })
+  @IsNotEmpty({ message: '字典项值不能为空' })
   @prop()
   public value: string;
 
-  @ApiProperty({ description: '类型项备注', example: '' })
+  @ApiProperty({ description: '字典项备注', example: '' })
   @prop()
   public remark?: string;
 

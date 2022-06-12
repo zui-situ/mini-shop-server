@@ -11,22 +11,22 @@ export type DictTypeDocument = DocumentType<DictType>;
 })
 export class DictType {
   @ApiProperty({
-    description: '类型名称',
+    description: '字典名称',
     example: '状态',
     required: true,
     type: String,
   })
-  @IsNotEmpty({ message: '类型名称不能为空' })
+  @IsNotEmpty({ message: '字典名称不能为空' })
   @prop()
   public name: string;
 
   @ApiProperty({
-    description: '类型字段',
+    description: '字典字段',
     example: 'sys_admin_show',
     required: true,
     type: String,
   })
-  @IsNotEmpty({ message: '类型字段不能为空' })
+  @IsNotEmpty({ message: '字典字段不能为空' })
   @prop()
   public code: string;
 
