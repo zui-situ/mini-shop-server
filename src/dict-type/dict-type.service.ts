@@ -66,10 +66,11 @@ export class DictTypeService {
    * @query query 内容
    */
   ListFindObj(query) {
-    const { status, name } = query;
-    const reg = new RegExp(name, 'i'); //不区分大小写
+    const { status, name, code } = query;
+    const nameReg = new RegExp(name, 'i'); //不区分大小写
+    const codeReg = new RegExp(code, 'i'); //不区分大小写
     const findObj: any = {
-      $or: [{ name: { $regex: reg } }],
+      $and: [{ name: { $regex: nameReg } }, { code: { $regex: codeReg } }],
       deleteFlag: 0,
     };
     if ((Number(status) === 1 || Number(status) === 0) && status !== '') {

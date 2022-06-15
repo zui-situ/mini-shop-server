@@ -23,7 +23,14 @@ export class listDto {
   readonly status: number;
 
   @ApiProperty({
-    description: '类别名称',
+    description: '字典字段',
+    type: String,
+    required: false,
+  })
+  readonly code: string;
+
+  @ApiProperty({
+    description: '字典名称',
     type: String,
     required: false,
   })
