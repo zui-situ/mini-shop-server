@@ -2,6 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { prop, modelOptions, DocumentType, Ref } from '@typegoose/typegoose';
 import { DictType } from './dictType.model';
 import { IsNotEmpty } from 'class-validator';
+import { ObjectId } from 'mongoose';
 
 export type DictItemDocument = DocumentType<DictItem>;
 
@@ -12,9 +13,13 @@ export type DictItemDocument = DocumentType<DictItem>;
   },
 })
 export class DictItem {
-  @ApiProperty({ description: '字典类别', type: String, required: true })
-  @IsNotEmpty({ message: '字典类别ID不能为空' })
-  @prop({ ref: 'DictType' })
+  @ApiProperty({
+    description: '字典ID',
+    type: String,
+    required: true,
+  })
+  @IsNotEmpty({ message: '字典ID不能为空' })
+  @prop({ type: String, ref: 'DictType' })
   public dictType: Ref<DictType>;
 
   @ApiProperty({

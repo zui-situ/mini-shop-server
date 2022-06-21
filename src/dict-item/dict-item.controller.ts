@@ -17,7 +17,6 @@ import { AuthGuard } from '@nestjs/passport';
 //添加增删改查方法
 @Crud({
   model: DictItem,
-  findKey: 'name',
   createDefaultValue: {
     status: 1,
     deleteFlag: 0,
