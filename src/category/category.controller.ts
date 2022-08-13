@@ -29,7 +29,7 @@ import { ReturnModelType } from '@typegoose/typegoose';
   },
 })
 @Controller('category')
-@ApiTags('分类')
+@ApiTags('商品分类')
 export class CategoryController {
   constructor(
     private readonly categoryService: CategoryService,

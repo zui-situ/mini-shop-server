@@ -5,8 +5,15 @@ import { User } from './models/user.model';
 import { Category } from './models/category.model';
 import { DictType } from './models/dictType.model';
 import { DictItem } from './models/dictItem.model';
+import { Goods } from './models/goods.model';
 
-const models = TypegooseModule.forFeature([User, Category, DictType, DictItem]);
+const models = TypegooseModule.forFeature([
+  User,
+  Category,
+  DictType,
+  DictItem,
+  Goods,
+]);
 
 //标记为全局引用模块
 @Global()
