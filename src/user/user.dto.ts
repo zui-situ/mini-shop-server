@@ -26,3 +26,18 @@ export class RegisterDTO {
   })
   readonly role?: number | string;
 }
+
+export class updateUserInfoDTO {
+  @ApiProperty({ description: '用户头像', example: 'admin', required: false })
+  readonly avatarUrl: string;
+
+  @ApiProperty({
+    description: '手机号',
+    example: '13800000000',
+    required: false,
+  })
+  readonly phone: string;
+
+  @ApiProperty({ description: '个性签名', example: '开心', required: false })
+  readonly utograph: string;
+}

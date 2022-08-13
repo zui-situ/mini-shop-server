@@ -4,6 +4,7 @@ import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { User } from '@app/db/models/user.model';
 import { makeSalt, encryptPassword } from '../utils/cryptogram';
+import { ObjectId } from 'mongoose';
 
 @Injectable()
 export class UserService {
@@ -70,5 +71,15 @@ export class UserService {
       // code: 200,
       data: user,
     };
+  }
+
+  /**
+   * @name:获取用户信息
+   * @msg:
+   * @param {*}
+   * @return {*}
+   */
+  async updateUserInfo(id: ObjectId, body: any): Promise<any> {
+    await this.userModel.findByIdAndUpdate(id, body);
   }
 }
