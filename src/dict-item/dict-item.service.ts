@@ -31,7 +31,9 @@ export class DictItemService {
       findObj,
       '-deleteFlag',
       selectObj,
-    ).lean();
+    )
+      .populate('dictType')
+      .lean();
     return data;
   }
   /**

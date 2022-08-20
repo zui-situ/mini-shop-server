@@ -1,15 +1,25 @@
-import { Goods } from '@app/db/models/goods.model';
+import { Order } from '@app/db/models/order.model';
 import { Injectable } from '@nestjs/common';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { ObjectId } from 'mongoose';
 import { InjectModel } from 'nestjs-typegoose';
 
 @Injectable()
-export class GoodsService {
+export class OrderService {
   constructor(
-    @InjectModel(Goods)
-    private goodsModel: ReturnModelType<typeof Goods>,
+    @InjectModel(Order)
+    private orderModel: ReturnModelType<typeof Order>,
   ) {}
+
+  /**
+   * 创建订单
+   *
+   * @param id ID
+   * @param status 状态
+   */
+  async createOrder(body: any, userId: ObjectId): Promise<any> {
+    const {} = body;
+  }
 
   /**
    * 更新状态
@@ -17,15 +27,15 @@ export class GoodsService {
    * @param id ID
    * @param status 状态
    */
-  async upDateGoodsStatus(id: ObjectId, status: number): Promise<void> {
-    await this.goodsModel.findByIdAndUpdate(id, { status });
+  async upDateStatus(id: ObjectId, status: number): Promise<void> {
+    await this.orderModel.findByIdAndUpdate(id, { status });
   }
   /**
    * 查询商品列表
    *
    * @query query 内容
    */
-  async goodsList(query: any): Promise<any> {
+  async list(query: any): Promise<any> {
     const { pageNo, pageSize } = query;
     const skip = (pageNo - 1) * pageSize;
     const findObj = await this.ListFindObj(query);
@@ -38,7 +48,7 @@ export class GoodsService {
         skip,
       });
     }
-    const data = await this.goodsModel
+    const data = await this.orderModel
       .find(findObj, '-deleteFlag', selectObj)
       .populate('category')
       .lean();
@@ -52,7 +62,7 @@ export class GoodsService {
   async goodsPage(query: any): Promise<any> {
     const { pageNo, pageSize } = query;
     const findObj = await this.ListFindObj(query);
-    const count = await this.goodsModel.countDocuments(findObj);
+    const count = await this.orderModel.countDocuments(findObj);
     return {
       count,
       currentPage: Number(pageNo),

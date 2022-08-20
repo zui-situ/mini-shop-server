@@ -11,6 +11,7 @@ import { FileModule } from './file/file.module';
 import { DictTypeModule } from './dict-type/dict-type.module';
 import { DictItemModule } from './dict-item/dict-item.module';
 import { GoodsModule } from './goods/goods.module';
+import { OrderModule } from './order/order.module';
 const MAO = require('multer-aliyun-oss');
 
 @Module({
@@ -39,6 +40,7 @@ const MAO = require('multer-aliyun-oss');
     DictTypeModule,
     DictItemModule,
     GoodsModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],

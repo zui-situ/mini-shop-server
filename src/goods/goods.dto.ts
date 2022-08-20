@@ -10,7 +10,7 @@ export class goodsDto {
 
 export class editStatusDto {
   @ApiProperty({
-    description: '[禁用标记]: 0-关闭 | 1-开启',
+    description: '商品上下架状态, 0是下架，1是上架',
     enum: [0, 1],
     example: 0,
     type: Number,
@@ -21,7 +21,7 @@ export class editStatusDto {
 
 export class listDto {
   @ApiProperty({
-    description: '[禁用标记]: 0-关闭 | 1-开启',
+    description: '商品上下架状态, 0是下架，1是上架',
     example: 0,
     type: Number,
     required: false,
