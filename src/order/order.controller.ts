@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
-import { createOrderDto, listDto, payOrderDto } from './order.dto';
+import { createOrderDto, listDto } from './order.dto';
 import { OrderService } from './order.service';
 import { CurrentUser } from 'libs/common/decorator/current.user.decorator';
 import { UserDocument } from '@app/db/models/user.model';
