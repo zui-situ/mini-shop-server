@@ -82,4 +82,59 @@ export class UserService {
   async updateUserInfo(id: ObjectId, body: any): Promise<any> {
     await this.userModel.findByIdAndUpdate(id, body);
   }
+
+  /**
+   * 查询列表
+   *
+   * @query query 内容
+   */
+  async list(query: any): Promise<any> {
+    const { pageNo, pageSize } = query;
+    const skip = (pageNo - 1) * pageSize;
+    const findObj = await this.listFindObj(query);
+    const selectObj = {
+      sort: '-createdAt',
+    };
+    if (pageNo && pageSize) {
+      Object.assign(selectObj, {
+        limit: pageSize * 1,
+        skip,
+      });
+    }
+    const data = await this.userModel
+      .find(findObj, '-deleteFlag', selectObj)
+      .lean();
+    return data;
+  }
+  /**
+   * 查询分页
+   *
+   * @query query 内容
+   */
+  async page(query: any): Promise<any> {
+    const { pageNo, pageSize } = query;
+    const findObj = await this.listFindObj(query);
+    const count = await this.userModel.countDocuments(findObj);
+    return {
+      count,
+      currentPage: Number(pageNo),
+      limit: Number(pageSize),
+      total: Math.ceil(count / pageSize),
+    };
+  }
+  /**
+   * 查询obj
+   *
+   * @query query 内容
+   */
+  listFindObj(query) {
+    const { username, phone } = query;
+    const regName = new RegExp(username, 'i'); //不区分大小写
+    const regPhone = new RegExp(phone, 'i'); //不区分大小写
+    const findObj: any = {
+      $or: [{ username: { $regex: regName }, phone: { $regex: regPhone } }],
+      deleteFlag: 0,
+    };
+    return findObj;
+  }
 }

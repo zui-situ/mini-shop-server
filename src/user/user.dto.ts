@@ -41,3 +41,33 @@ export class updateUserInfoDTO {
   @ApiProperty({ description: '个性签名', example: '开心', required: false })
   readonly utograph: string;
 }
+
+export class listDto {
+  @ApiProperty({
+    description: '用户名',
+    type: String,
+    required: false,
+  })
+  readonly username: string;
+
+  @ApiProperty({
+    description: '手机号',
+    type: String,
+    required: false,
+  })
+  readonly phone: string;
+
+  @ApiProperty({
+    description: '当前页数',
+    type: Number,
+  })
+  // @IsNotEmpty({ message: 'pageNo不能为空' })
+  readonly pageNo: number;
+
+  @ApiProperty({
+    description: '单页数量',
+    type: Number,
+  })
+  // @IsNotEmpty({ message: 'pageSize不能为空' })
+  readonly pageSize: number;
+}
