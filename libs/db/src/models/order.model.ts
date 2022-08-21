@@ -21,7 +21,7 @@ export class Order {
 
   @ApiProperty({ description: '商品Id', type: String })
   @IsNotEmpty({ message: '商品ID不能为空' })
-  @prop({ type: () => String })
+  @prop({ type: () => String, ref: 'Goods' })
   public goods: string;
 
   @ApiProperty({
@@ -42,7 +42,7 @@ export class Order {
     description: '下单用户ID',
   })
   // @IsNotEmpty({ message: '下单用户信息不能为空' })
-  @prop({ type: String })
+  @prop({ type: String, ref: 'User' })
   public user: string;
 
   @ApiProperty({
