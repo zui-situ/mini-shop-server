@@ -66,7 +66,7 @@ export class GoodsService {
    * @query query 内容
    */
   ListFindObj(query) {
-    const { status, name } = query;
+    const { status, name, categoryId } = query;
     const reg = new RegExp(name, 'i'); //不区分大小写
     const findObj: any = {
       $or: [{ name: { $regex: reg } }],
@@ -75,6 +75,19 @@ export class GoodsService {
     if ((Number(status) === 1 || Number(status) === 0) && status !== '') {
       findObj.status = Number(status);
     }
+    if (categoryId) {
+      findObj.category = categoryId;
+    }
     return findObj;
+  }
+
+  /**
+   * 通过ID查询商品
+   *
+   * @query id 内容
+   */
+  async findById(id) {
+    const goodsInfo = await this.goodsModel.findById(id);
+    return goodsInfo;
   }
 }

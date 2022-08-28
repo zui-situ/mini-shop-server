@@ -16,7 +16,7 @@ import { ReturnModelType } from '@typegoose/typegoose';
 import { Crud } from 'libs/common/decorator/crud/crud.decorator';
 import { ObjectId } from 'mongoose';
 import { InjectModel } from 'nestjs-typegoose';
-import { editStatusDto, listDto } from './goods.dto';
+import { editStatusDto, goodsListDto } from './goods.dto';
 import { GoodsService } from './goods.service';
 
 @Crud({
@@ -41,7 +41,7 @@ export class GoodsController {
   @ApiBearerAuth() //标签这个接口需要传递token
   @UseGuards(AuthGuard('jwt'))
   @UsePipes(new ValidationPipe()) // 使用管道验证
-  async labelList(@Query() query: listDto): Promise<any> {
+  async labelList(@Query() query: goodsListDto): Promise<any> {
     const list = await this.goodsService.goodsList(query);
     const pagination = await this.goodsService.goodsPage(query);
     return {

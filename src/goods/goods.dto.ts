@@ -19,7 +19,15 @@ export class editStatusDto {
   readonly status: number;
 }
 
-export class listDto {
+export class goodsListDto {
+  @ApiProperty({
+    description: '商品分类ID',
+    example: '',
+    type: String,
+    required: false,
+  })
+  readonly categoryId: string;
+
   @ApiProperty({
     description: '商品上下架状态, 0是下架，1是上架',
     example: 0,
