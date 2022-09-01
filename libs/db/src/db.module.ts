@@ -7,6 +7,7 @@ import { DictType } from './models/dictType.model';
 import { DictItem } from './models/dictItem.model';
 import { Goods } from './models/goods.model';
 import { Order } from './models/order.model';
+import { Sku } from './models/sku.model';
 
 const models = TypegooseModule.forFeature([
   User,
@@ -15,6 +16,7 @@ const models = TypegooseModule.forFeature([
   DictItem,
   Goods,
   Order,
+  Sku,
 ]);
 
 //标记为全局引用模块

@@ -48,6 +48,20 @@ export class Goods {
   @prop()
   public details?: string;
 
+  @ApiProperty({
+    description: '套餐内容',
+    required: false,
+  })
+  @prop()
+  public mealContont?: string;
+
+  @ApiProperty({
+    description: '购买须知',
+    required: false,
+  })
+  @prop()
+  public purchaseNotes?: string;
+
   // @ApiProperty({
   //   description: '商品上下架状态, 0是下架，1是上架',
   // })
