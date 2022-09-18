@@ -65,10 +65,10 @@ export class FreeController {
    * @param id ID
    */
   @Get('goods/:id')
-  @ApiOperation({ summary: '商品列表' })
+  @ApiOperation({ summary: '商品详情' })
   @UsePipes(new ValidationPipe()) // 使用管道验证
   async findGoods(@Param('id') id: ObjectId): Promise<any> {
-    const data = await this.goodsService.findById(id);
+    const data = await this.goodsService.findGoods(id);
     return {
       data,
     };
