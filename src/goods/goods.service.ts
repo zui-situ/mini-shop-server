@@ -132,16 +132,24 @@ export class GoodsService {
     const skuIdList = skuList.map((item) => {
       return item._id.toString();
     });
+    const updateSkuId = [];
     for (let i = 0; i < sku.length; i++) {
       const item = sku[i];
       const { skuId } = item;
       if (skuId && skuIdList.includes(skuId)) {
+        updateSkuId.push(skuId);
         await this.skuModel.findByIdAndUpdate(skuId, item);
       } else {
         delete item.skuId;
         item.goods = id;
         item.deleteFlag = 0;
         await this.skuModel.create(item);
+      }
+    }
+    for (let i = 0; i < skuIdList.length; i++) {
+      const item = skuIdList[i];
+      if (!updateSkuId.includes(item)) {
+        await this.skuModel.findByIdAndUpdate(item, { deleteFlag: 1 });
       }
     }
   }
