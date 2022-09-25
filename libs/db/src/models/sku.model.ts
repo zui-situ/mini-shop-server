@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { prop, modelOptions, DocumentType, Ref } from '@typegoose/typegoose';
 import { IsNotEmpty } from 'class-validator';
 import { Goods } from './goods.model';
-export type CategoryDocument = DocumentType<Sku>;
+export type SkuDocument = DocumentType<Sku>;
 
 //为模型添加创建时间createdAt和更新时间updatedAt
 @modelOptions({
